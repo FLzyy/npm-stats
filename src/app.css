@@ -1,0 +1,15 @@
+html,
+body {
+	background-color: black;
+
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	place-items: center;
+	place-content: center;
+}
+
+* {
+	color: white;
+}
