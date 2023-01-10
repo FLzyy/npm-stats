@@ -1,3 +1,23 @@
+<script lang="ts">
+	import { goto } from '$app/navigation';
+
+	let link = '';
+
+	const isValid = (value: string) => {
+		return /^(@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*\\[~^]?([\dvx*]+(?:[-.](?:[\dx*]+|alpha|beta))*$)/g.test(
+			value
+		);
+	};
+
+	const onClick = () => {
+		if (link && isValid(link)) {
+			goto(`stats/${link.replaceAll('/', '|').replaceAll('\\', '|')}`);
+		} else {
+			alert('Empty or invalid package name.');
+		}
+	};
+</script>
+
 <main>
 	<h1>Welcome to npm-stats</h1>
 
@@ -7,10 +27,11 @@
 				aria-label="NPM Package Name here"
 				type="text"
 				id="pkgname"
-				name="Package Name"
+				name="pkgname"
+				bind:value={link}
 			/></label
 		>
-		<button>Go!</button>
+		<button on:click|preventDefault|once={onClick}>Go!</button>
 	</form>
 </main>
 
