@@ -31,7 +31,7 @@
 				bind:value={link}
 			/></label
 		>
-		<button on:click|preventDefault|once={onClick}>Go!</button>
+		<button on:click|preventDefault={onClick}>Go!</button>
 	</form>
 </main>
 
