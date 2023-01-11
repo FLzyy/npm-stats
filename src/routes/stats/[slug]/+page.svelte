@@ -39,16 +39,22 @@
 	>
 </a>
 
-{#await promise}
-	<div class="lds-ripple">
-		<div />
-		<div />
-	</div>
-{:then data}
-	<h2>{data.name}</h2>
-{:catch error}
-	<h2>Something went wrong: {error.message}</h2>
-{/await}
+<main>
+	{#await promise}
+		<div class="lds-ripple">
+			<div />
+			<div />
+		</div>
+	{:then data}
+		<header>
+			<h2>{data.name}</h2>
+			<p>Description: {data.description}</p>
+		</header>
+		<p>Version: {data.version}</p>
+	{:catch error}
+		<h2>Something went wrong: {error.message}</h2>
+	{/await}
+</main>
 
 <style>
 	* {
